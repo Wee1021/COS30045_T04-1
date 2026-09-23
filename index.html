@@ -39,6 +39,46 @@
 		#scene-annotated #annotations text {
 			stroke: none;
 		}
+
+		#scene-adjusted-figure {
+			margin-top: 2rem;
+		}
+
+		#scene-adjusted .adjusted-house-body {
+			fill: #f8d58a;
+			stroke: #4d3020;
+			stroke-width: 6;
+		}
+
+		#scene-adjusted .adjusted-roof {
+			fill: #a93f3f;
+			stroke: #4d3020;
+			stroke-width: 7;
+		}
+
+		#scene-adjusted .adjusted-fence {
+			stroke: #5c3825;
+			stroke-width: 6;
+			stroke-dasharray: 14 8;
+		}
+
+		#scene-adjusted .adjusted-footpath {
+			fill: #b8b0a0;
+			stroke: #756d60;
+			stroke-width: 4;
+		}
+
+		#scene-adjusted .adjusted-mailbox {
+			fill: #315b68;
+			stroke: #20333b;
+			stroke-width: 3;
+		}
+
+		#scene-adjusted .adjusted-smoke {
+			fill: #dce5e7;
+			stroke: #9aaeb3;
+			stroke-width: 2;
+		}
 	</style>
 </head>
 <body>
@@ -166,6 +206,76 @@
 		</g>
 	</svg>
 		<figcaption>Annotated scene (Step 2)</figcaption>
+	</figure>
+
+	<figure id="scene-adjusted-figure">
+	<svg id="scene-adjusted" viewBox="0 0 800 500" role="img" aria-labelledby="adjusted-scene-title adjusted-scene-desc">
+		<title id="adjusted-scene-title">An adjusted house and garden scene</title>
+		<desc id="adjusted-scene-desc">A higher-contrast house and garden scene with a repositioned tree and house, dashed fence, footpath, mailbox, and chimney smoke.</desc>
+
+		<!-- Contrast adjustment: deepen the ground and sky colors. -->
+		<rect x="0" y="0" width="800" height="500" fill="#a9ddeb"></rect>
+		<rect x="0" y="350" width="800" height="150" fill="#72b965"></rect>
+
+		<!-- Keep the sun and cloud shapes, with slightly varied outlines. -->
+		<circle cx="690" cy="90" r="48" fill="#ffd45c" stroke="#b87916" stroke-width="5"></circle>
+		<ellipse cx="155" cy="105" rx="70" ry="28" fill="#ffffff" stroke="#9bbcc4" stroke-width="2"></ellipse>
+		<circle cx="115" cy="100" r="30" fill="#ffffff" stroke="#9bbcc4" stroke-width="2"></circle>
+		<circle cx="175" cy="88" r="38" fill="#ffffff" stroke="#9bbcc4" stroke-width="2"></circle>
+
+		<!-- Balance adjustment: move the tree slightly right and down. -->
+		<g id="adjusted-tree" transform="translate(18, 6)">
+			<rect x="95" y="238" width="34" height="125" fill="#714329" stroke="#4d3020" stroke-width="4"></rect>
+			<circle cx="112" cy="205" r="62" fill="#347d42" stroke="#245c30" stroke-width="3"></circle>
+			<circle cx="65" cy="235" r="45" fill="#4b9649" stroke="#347238" stroke-width="3"></circle>
+			<circle cx="158" cy="235" r="45" fill="#2f713c" stroke="#245c30" stroke-width="3"></circle>
+		</g>
+
+		<!-- Balance adjustment: move the house slightly left. -->
+		<g id="adjusted-house" transform="translate(-10, 0)">
+			<rect class="adjusted-house-body" x="275" y="225" width="285" height="175"></rect>
+			<polygon class="adjusted-roof" points="245,230 415,90 590,230"></polygon>
+			<rect x="495" y="137" width="34" height="86" fill="#854832" stroke="#4d3020" stroke-width="5"></rect>
+
+			<!-- Vary the house detail strokes for clearer separation. -->
+			<rect x="385" y="298" width="68" height="102" fill="#573722" stroke="#2f2119" stroke-width="5"></rect>
+			<circle cx="438" cy="350" r="5" fill="#ffe27a"></circle>
+			<rect x="305" y="265" width="55" height="52" fill="#b6e8f0" stroke="#2f4e58" stroke-width="5"></rect>
+			<line x1="332.5" y1="265" x2="332.5" y2="317" stroke="#2f4e58" stroke-width="3"></line>
+			<line x1="305" y1="291" x2="360" y2="291" stroke="#2f4e58" stroke-width="3"></line>
+			<rect x="480" y="265" width="55" height="52" fill="#b6e8f0" stroke="#2f4e58" stroke-width="5"></rect>
+			<line x1="507.5" y1="265" x2="507.5" y2="317" stroke="#2f4e58" stroke-width="3"></line>
+			<line x1="480" y1="291" x2="535" y2="291" stroke="#2f4e58" stroke-width="3"></line>
+		</g>
+
+		<!-- Fence adjustment: use a dashed rail and varied post width. -->
+		<polyline class="adjusted-fence" points="25,355 25,310 65,310 65,355 105,355 105,310 145,310 145,355 185,355 185,310 225,310 225,355" fill="none"></polyline>
+		<line class="adjusted-fence" x1="15" y1="328" x2="235" y2="328"></line>
+
+		<!-- Preserve the original curved garden path in the third copy. -->
+		<path d="M 420 400 C 430 425, 520 435, 600 500 L 360 500 C 400 455, 420 425, 420 400 Z" fill="#d8bd91" stroke="#aa895e" stroke-width="3"></path>
+
+		<!-- Added feature: a curved stone footpath leading to the door. -->
+		<path class="adjusted-footpath" d="M 419 400 C 401 428, 390 464, 382 500 L 486 500 C 465 458, 445 425, 419 400 Z"></path>
+		<path d="M 419 410 C 412 430, 407 452, 403 475" fill="none" stroke="#e6dfd1" stroke-width="5" stroke-dasharray="18 10"></path>
+
+		<!-- Added feature: a small mailbox beside the path. -->
+		<g id="mailbox" transform="translate(535, 350)">
+			<rect class="adjusted-mailbox" x="0" y="0" width="38" height="25"></rect>
+			<polygon class="adjusted-mailbox" points="0,0 19,-12 38,0"></polygon>
+			<line x1="19" y1="25" x2="19" y2="58" stroke="#4d3020" stroke-width="5"></line>
+		</g>
+
+		<!-- Added feature: a subtle puff of smoke above the chimney. -->
+		<ellipse class="adjusted-smoke" cx="512" cy="112" rx="18" ry="10"></ellipse>
+		<ellipse class="adjusted-smoke" cx="530" cy="88" rx="15" ry="9"></ellipse>
+		<ellipse class="adjusted-smoke" cx="518" cy="66" rx="11" ry="7"></ellipse>
+
+		<!-- Preserve the original garden detail and caption. -->
+		<polygon points="650,390 662,420 695,420 668,439 678,470 650,451 622,470 632,439 605,420 638,420" fill="#d83f5f" stroke="#8f2038" stroke-width="3"></polygon>
+		<text x="400" y="475" text-anchor="middle" font-size="24" font-weight="bold" fill="#234b2d">Welcome to our garden</text>
+	</svg>
+		<figcaption>Adjusted scene (Step 3)</figcaption>
 	</figure>
 </body>
 </html>
